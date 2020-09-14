@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Comment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -34,8 +35,11 @@ class DefaultController extends Controller
      */
      public function showAction(Request $request, Post $post)
      {
+         $comments = $this->getDoctrine()->getRepository(Comment::class)->findOneBy(['post'=> $post]);
+         var_dump($comments);
          return $this->render('default/show.html.twig', [
-             'post' => $post
+             'post' => $post,
+             'comments' => $comments
          ]);
      }
 

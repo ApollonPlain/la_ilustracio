@@ -112,7 +112,23 @@ class __TwigTemplate_70a2c0ad01034b4b17cb56c9eab954e5298892ed1243b23564d4baa1281
         // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("comment", ["post" => twig_get_attribute($this->env, $this->source, (isset($context["post"]) || array_key_exists("post", $context) ? $context["post"] : (function () { throw new RuntimeError('Variable "post" does not exist.', 15, $this->source); })()), "id", [], "any", false, false, false, 15)]), "html", null, true);
         echo "\" class=\"btn btn-primary\"><i class=\"icon-speech-bubble\"></i> Add comment</a>
-\t\t\t\t</div>
+
+\t\t\t\t\t";
+        // line 17
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["comments"]) || array_key_exists("comments", $context) ? $context["comments"] : (function () { throw new RuntimeError('Variable "comments" does not exist.', 17, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["comment"]) {
+            // line 18
+            echo "\t\t\t\t\t\t<h2> comment.user.username </h2>
+\t\t\t\t\t\t<p>comment.datetime</p>
+\t\t\t\t\t\t<p> comment content</p>
+\t\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['comment'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 22
+        echo "\t\t\t\t</div>
         \t</div>
        </div>
 \t</div>
@@ -137,7 +153,7 @@ class __TwigTemplate_70a2c0ad01034b4b17cb56c9eab954e5298892ed1243b23564d4baa1281
 
     public function getDebugInfo()
     {
-        return array (  113 => 15,  109 => 14,  105 => 13,  98 => 11,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  131 => 22,  122 => 18,  118 => 17,  113 => 15,  109 => 14,  105 => 13,  98 => 11,  94 => 10,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -157,6 +173,12 @@ class __TwigTemplate_70a2c0ad01034b4b17cb56c9eab954e5298892ed1243b23564d4baa1281
 \t\t\t\t\t<p>{{ post.content }}</p>
 \t\t\t\t\t<a href=\"{{ path('homepage') }}\" class=\"btn btn-primary\"><i class=\"icon-arrow-left2\"></i> Back</a>\t\t\t\t\t
 \t\t\t\t\t<a href=\"{{ path('comment', {post: post.id}) }}\" class=\"btn btn-primary\"><i class=\"icon-speech-bubble\"></i> Add comment</a>
+
+\t\t\t\t\t{% for comment in comments %}
+\t\t\t\t\t\t<h2> comment.user.username </h2>
+\t\t\t\t\t\t<p>comment.datetime</p>
+\t\t\t\t\t\t<p> comment content</p>
+\t\t\t\t\t{% endfor %}
 \t\t\t\t</div>
         \t</div>
        </div>

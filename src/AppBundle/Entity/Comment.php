@@ -38,7 +38,7 @@ class Comment
     private $publishedAt;
 
     /**
-     * @var post
+     * @var Post
      *
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="post")
      */
