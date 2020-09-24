@@ -1242,6 +1242,6 @@ class __TwigTemplate_cd100812df5f6f4b4d3cb67b0b38dc4684a7c6b17cf8b9571aa67e2a6e9
         display: none;
     }
 }
-", "@WebProfiler/Profiler/toolbar.css.twig", "/home/guillaumeg/Periodico/periodico/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views/Profiler/toolbar.css.twig");
+", "@WebProfiler/Profiler/toolbar.css.twig", "/home/guillaumeg/Periodico/la_ilustracion/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views/Profiler/toolbar.css.twig");
     }
 }

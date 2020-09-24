@@ -115,6 +115,6 @@ class __TwigTemplate_79351d2e6c10824df30ff473b9e6ad652431d56b7edd54f768eacde583a
         </div>
     {% endif %}
 {% endblock %}
-", "user/login.html.twig", "/home/guillaumeg/Periodico/periodico/app/Resources/views/user/login.html.twig");
+", "user/login.html.twig", "/home/guillaumeg/Periodico/la_ilustracion/app/Resources/views/user/login.html.twig");
     }
 }

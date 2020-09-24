@@ -154,7 +154,7 @@ class __TwigTemplate_41515f9e687c3163cd9db34737e7893f76775db0852793839a1214c62cb
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("homepage");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/logo.png"), "html", null, true);
-        echo "\" style=\"width: 150px;\"/></a>\t\t
+        echo "\" style=\"width: 150px;\"/></a>
                     </div>
                 </div>
             </div>
@@ -338,7 +338,7 @@ class __TwigTemplate_41515f9e687c3163cd9db34737e7893f76775db0852793839a1214c62cb
                 <div class=\"row\">
                     <div class=\"col-md-12\">
                         <a href=\"#\" class=\"fh5co-menu-btn js-fh5co-menu-btn\">Menu <i class=\"icon-menu\"></i></a>
-                        <a class=\"navbar-brand\" href=\"{{ path('homepage') }}\"><img src=\"{{ asset('images/logo.png')}}\" style=\"width: 150px;\"/></a>\t\t
+                        <a class=\"navbar-brand\" href=\"{{ path('homepage') }}\"><img src=\"{{ asset('images/logo.png')}}\" style=\"width: 150px;\"/></a>
                     </div>
                 </div>
             </div>
@@ -385,6 +385,6 @@ class __TwigTemplate_41515f9e687c3163cd9db34737e7893f76775db0852793839a1214c62cb
         <script src=\"{{ asset('js/main.js') }}\"></script>
     </body>
 </html>
-", "base.html.twig", "/home/guillaumeg/Periodico/periodico/app/Resources/views/base.html.twig");
+", "base.html.twig", "/home/guillaumeg/Periodico/la_ilustracion/app/Resources/views/base.html.twig");
     }
 }

@@ -1678,6 +1678,6 @@ class __TwigTemplate_8198c416029362dc90f3ff908a30e88dbe0d0a25d5e66a89cd3004e6961
         </tbody>
     </table>
 {% endmacro %}
-", "@Doctrine/Collector/db.html.twig", "/home/guillaumeg/Periodico/periodico/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
+", "@Doctrine/Collector/db.html.twig", "/home/guillaumeg/Periodico/la_ilustracion/vendor/doctrine/doctrine-bundle/Resources/views/Collector/db.html.twig");
     }
 }

@@ -949,6 +949,6 @@ class __TwigTemplate_5125bf58d8835fa06cded0c86f91c496383543103ac0f3741e4943646b1
         </table>
     {% endif %}
 {% endblock %}
-", "@Security/Collector/security.html.twig", "/home/guillaumeg/Periodico/periodico/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views/Collector/security.html.twig");
+", "@Security/Collector/security.html.twig", "/home/guillaumeg/Periodico/la_ilustracion/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views/Collector/security.html.twig");
     }
 }

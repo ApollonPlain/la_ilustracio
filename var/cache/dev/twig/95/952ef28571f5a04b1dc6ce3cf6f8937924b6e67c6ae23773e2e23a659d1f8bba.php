@@ -488,6 +488,6 @@ class __TwigTemplate_afc0b1fb03f6a62d6fe41b295c9263bfb45e57500097cda3639f4a2c2ef
         {% endif %}
     </div>
 </div>
-", "@Twig/Exception/exception.html.twig", "/home/guillaumeg/Periodico/periodico/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views/Exception/exception.html.twig");
+", "@Twig/Exception/exception.html.twig", "/home/guillaumeg/Periodico/la_ilustracion/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views/Exception/exception.html.twig");
     }
 }

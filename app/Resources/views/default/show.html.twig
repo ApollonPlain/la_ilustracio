@@ -15,9 +15,9 @@
 					<a href="{{ path('comment', {post: post.id}) }}" class="btn btn-primary"><i class="icon-speech-bubble"></i> Add comment</a>
 
 					{% for comment in comments %}
-						<h2> comment.user.username </h2>
-						<p>comment.datetime</p>
-						<p> comment content</p>
+						<p></p>
+						<span style="font-style: italic; font-size: 15px; color: #EF5353;"> {{ comment.user.username }} - {{ comment.publishedAt|date }}</span>
+						<p> {{ comment.content }} </p>
 					{% endfor %}
 				</div>
         	</div>

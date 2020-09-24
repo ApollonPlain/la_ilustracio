@@ -35,8 +35,8 @@ class DefaultController extends Controller
      */
      public function showAction(Request $request, Post $post)
      {
-         $comments = $this->getDoctrine()->getRepository(Comment::class)->findOneBy(['post'=> $post]);
-         var_dump($comments);
+         $comments = $this->getDoctrine()->getRepository(Comment::class)->findBy(['post' => $post]);
+
          return $this->render('default/show.html.twig', [
              'post' => $post,
              'comments' => $comments

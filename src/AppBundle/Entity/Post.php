@@ -58,6 +58,13 @@ class Post
      */
     private $user;
 
+    /**
+     * @var
+     *
+     * @ORM\Column(name="picture", type="string", length=255)
+     */
+    private $picture;
+
     public static function create()
     {
         return new self();
@@ -191,5 +198,25 @@ class Post
         $this->$user = $user;
 
         return $this;
+    }
+
+    /**
+     * Set picture
+     *
+     * @param string $picture
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * Get picture
+     *
+     * @return string
+     */
+    public function getPicture()
+    {
+        return $this->picture;
     }
 }

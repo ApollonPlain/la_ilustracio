@@ -840,6 +840,6 @@ class __TwigTemplate_9c712803628c3080e1f7bec567c60a7e055bd8c40a6f382da6f3757efb1
         {% endif %}
     {% endfor %}
 {% endblock %}
-", "@Swiftmailer/Collector/swiftmailer.html.twig", "/home/guillaumeg/Periodico/periodico/vendor/symfony/swiftmailer-bundle/Resources/views/Collector/swiftmailer.html.twig");
+", "@Swiftmailer/Collector/swiftmailer.html.twig", "/home/guillaumeg/Periodico/la_ilustracion/vendor/symfony/swiftmailer-bundle/Resources/views/Collector/swiftmailer.html.twig");
     }
 }

@@ -210,6 +210,6 @@ class __TwigTemplate_64656d902b119151421d6ae1973723d33163d10754084ec9e3a5e2f18eb
         <a href=\"#\"><i class=\"icon-instagram\"></i></a>
     </p>
 </div>
-", "/_menu.html.twig", "/home/guillaumeg/Periodico/periodico/app/Resources/views/_menu.html.twig");
+", "/_menu.html.twig", "/home/guillaumeg/Periodico/la_ilustracion/app/Resources/views/_menu.html.twig");
     }
 }

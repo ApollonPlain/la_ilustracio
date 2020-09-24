@@ -133,6 +133,6 @@ class __TwigTemplate_a4e058b4ff5fd6cfd7f5ac38b249eef0a820c7b47cb7c09a35e93b1d373
             </div>
         </div>
     </div>
-</div>", "/user/_login.html.twig", "/home/guillaumeg/Periodico/periodico/app/Resources/views/user/_login.html.twig");
+</div>", "/user/_login.html.twig", "/home/guillaumeg/Periodico/la_ilustracion/app/Resources/views/user/_login.html.twig");
     }
 }
