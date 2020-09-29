@@ -30,7 +30,7 @@ class ContactController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $contact->setContactedAt(new \DateTime());
 
-            $em = $this->getDoctrine()->getEntityManager();
+            $em = $this->getDoctrine()->getManager();
 
             $em->persist($contact);// prepare to insert into the database
             $em->flush();// execute all SQL queries
@@ -60,7 +60,7 @@ class ContactController extends Controller
      */
     public function listAction(Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $filter = $request->query->get('filter', 'all');
 

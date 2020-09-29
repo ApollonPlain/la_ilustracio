@@ -12,9 +12,10 @@
 namespace Symfony\Component\Cache\Simple;
 
 use Symfony\Component\Cache\Exception\CacheException;
+use Symfony\Component\Cache\PruneableInterface;
 use Symfony\Component\Cache\Traits\PhpFilesTrait;
 
-class PhpFilesCache extends AbstractCache
+class PhpFilesCache extends AbstractCache implements PruneableInterface
 {
     use PhpFilesTrait;
 
@@ -28,13 +29,13 @@ class PhpFilesCache extends AbstractCache
     public function __construct($namespace = '', $defaultLifetime = 0, $directory = null)
     {
         if (!static::isSupported()) {
-            throw new CacheException('OPcache is not enabled');
+            throw new CacheException('OPcache is not enabled.');
         }
         parent::__construct('', $defaultLifetime);
         $this->init($namespace, $directory);
 
         $e = new \Exception();
         $this->includeHandler = function () use ($e) { throw $e; };
-        $this->zendDetectUnicode = ini_get('zend.detect_unicode');
+        $this->zendDetectUnicode = filter_var(ini_get('zend.detect_unicode'), \FILTER_VALIDATE_BOOLEAN);
     }
 }

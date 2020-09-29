@@ -14,6 +14,7 @@ use AppBundle\Form\Type\PostType;
 use AppBundle\Form\Type\PostEditType;
 use Doctrine\ORM\EntityManagerInterface;
 
+
 class PostController extends Controller
 {
     /**
@@ -23,7 +24,6 @@ class PostController extends Controller
     public function postAction(Request $request, EntityManagerInterface $em, UserInterface $user = null)
     {
         $post = $user ? Post::createFromUser($user) : Post::create();
-
         $form = $this->createForm(PostType::class, $post);
 
         $form->handleRequest($request);
@@ -31,6 +31,29 @@ class PostController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $post->setPublishedAt(new \DateTime());
             $user->setIsAdmin(false);
+
+            /*$pictureFile = $form->get('picture')->getData();
+
+
+            if ($pictureFile) {
+                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$pictureFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $pictureFile->move(
+                        $this->getParameter('pictures_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+
+                $post->setPicture($newFilename);
+            }*/
 
             $em->persist($post);// prepare to insert into the database
             $em->flush();// execute all SQL queries
@@ -51,7 +74,7 @@ class PostController extends Controller
      */
      public function listAction(Request $request)
      {
-         $em = $this->getDoctrine()->getEntityManager();
+         $em = $this->getDoctrine()->getManager();
  
          $filter = $request->query->get('filter', 'all');
          $posts = $em->getRepository(Post::class)->findForList($filter);

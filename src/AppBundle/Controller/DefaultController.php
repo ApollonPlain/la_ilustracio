@@ -19,7 +19,7 @@ class DefaultController extends Controller
      */
      public function listAction(Request $request)
      {
-         $em = $this->getDoctrine()->getEntityManager();
+         $em = $this->getDoctrine()->getManager();
  
          $filter = $request->query->get('filter', 'all');
          $posts = $em->getRepository(Post::class)->findForList($filter);

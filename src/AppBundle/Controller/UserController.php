@@ -129,7 +129,7 @@ class UserController extends Controller
      */
     public function listAction(Request $request)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $filter = $request->query->get('filter', 'all');
         $users = $em->getRepository(User::class)->findForList($filter);

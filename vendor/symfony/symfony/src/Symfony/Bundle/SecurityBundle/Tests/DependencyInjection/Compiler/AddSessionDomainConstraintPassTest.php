@@ -22,7 +22,7 @@ class AddSessionDomainConstraintPassTest extends TestCase
 {
     public function testSessionCookie()
     {
-        $container = $this->createContainer(array('cookie_domain' => '.symfony.com.', 'cookie_secure' => true));
+        $container = $this->createContainer(['cookie_domain' => '.symfony.com.', 'cookie_secure' => true]);
 
         $utils = $container->get('security.http_utils');
         $request = Request::create('/', 'get');
@@ -37,7 +37,7 @@ class AddSessionDomainConstraintPassTest extends TestCase
 
     public function testSessionNoDomain()
     {
-        $container = $this->createContainer(array('cookie_secure' => true));
+        $container = $this->createContainer(['cookie_secure' => true]);
 
         $utils = $container->get('security.http_utils');
         $request = Request::create('/', 'get');
@@ -52,7 +52,7 @@ class AddSessionDomainConstraintPassTest extends TestCase
 
     public function testSessionNoSecure()
     {
-        $container = $this->createContainer(array('cookie_domain' => '.symfony.com.'));
+        $container = $this->createContainer(['cookie_domain' => '.symfony.com.']);
 
         $utils = $container->get('security.http_utils');
         $request = Request::create('/', 'get');
@@ -67,7 +67,7 @@ class AddSessionDomainConstraintPassTest extends TestCase
 
     public function testSessionNoSecureAndNoDomain()
     {
-        $container = $this->createContainer(array());
+        $container = $this->createContainer([]);
 
         $utils = $container->get('security.http_utils');
         $request = Request::create('/', 'get');
@@ -96,23 +96,10 @@ class AddSessionDomainConstraintPassTest extends TestCase
         $this->assertTrue($utils->createRedirectResponse($request, 'http://pirate.com/foo')->isRedirect('http://pirate.com/foo'));
     }
 
-    /**
-     * @expectedException \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
-     * @expectedExceptionMessage You have requested a non-existent service "security.http_utils".
-     */
-    public function testNoHttpUtils()
-    {
-        $container = new ContainerBuilder();
-        $container->setParameter('session.storage.options', array());
-
-        $pass = new AddSessionDomainConstraintPass();
-        $pass->process($container);
-    }
-
     private function createContainer($sessionStorageOptions)
     {
         $container = new ContainerBuilder();
-        $container->setParameter('kernel.bundles_metadata', array());
+        $container->setParameter('kernel.bundles_metadata', []);
         $container->setParameter('kernel.cache_dir', __DIR__);
         $container->setParameter('kernel.charset', 'UTF-8');
         $container->setParameter('kernel.container_class', 'cc');
@@ -126,15 +113,15 @@ class AddSessionDomainConstraintPassTest extends TestCase
         $container->setParameter('request_listener.http_port', 80);
         $container->setParameter('request_listener.https_port', 443);
 
-        $config = array(
-            'security' => array(
-                'providers' => array('some_provider' => array('id' => 'foo')),
-                'firewalls' => array('some_firewall' => array('security' => false)),
-            ),
-        );
+        $config = [
+            'security' => [
+                'providers' => ['some_provider' => ['id' => 'foo']],
+                'firewalls' => ['some_firewall' => ['security' => false]],
+            ],
+        ];
 
         $ext = new FrameworkExtension();
-        $ext->load(array('framework' => array('csrf_protection' => false)), $container);
+        $ext->load(['framework' => ['csrf_protection' => false]], $container);
 
         $ext = new SecurityExtension();
         $ext->load($config, $container);
