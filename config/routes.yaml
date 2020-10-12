@@ -1,0 +1,22 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+redirect_to_default_locale:
+  path: ""
+  defaults:
+    _controller: App\Controller\DefaultController::listAction
+    path: /en
+#    path: /%locale%
+
+logout:
+  path: "/logout"
+
+app:
+  resource: '../src/Controller/'
+  type: annotation
+  prefix: "{_locale}"
+  requirements:
+    _locale: "|en|fr"
+  defaults:
+    _locale: en

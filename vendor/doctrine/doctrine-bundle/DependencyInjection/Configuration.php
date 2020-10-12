@@ -4,17 +4,15 @@ namespace Doctrine\Bundle\DoctrineBundle\DependencyInjection;
 
 use Doctrine\ORM\EntityManager;
 use ReflectionClass;
+use Symfony\Component\Config\Definition\BaseNode;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\Exception\LogicException;
-use const E_USER_DEPRECATED;
 use function array_key_exists;
 use function in_array;
 use function is_array;
-use function sprintf;
-use function trigger_error;
 
 /**
  * This class contains the configuration information for the bundle
@@ -41,13 +39,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder() : TreeBuilder
     {
         $treeBuilder = new TreeBuilder('doctrine');
-
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root('doctrine');
-        }
+        $rootNode    = $treeBuilder->getRootNode();
 
         $this->addDbalSection($rootNode);
         $this->addOrmSection($rootNode);
@@ -58,7 +50,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Add DBAL section to configuration tree
      */
-    private function addDbalSection(ArrayNodeDefinition $node)
+    private function addDbalSection(ArrayNodeDefinition $node) : void
     {
         $node
             ->children()
@@ -100,7 +92,7 @@ class Configuration implements ConfigurationInterface
                             ->end()
                             ->children()
                                 ->scalarNode('class')->isRequired()->end()
-                                ->booleanNode('commented')->defaultNull()->end()
+                                ->booleanNode('commented')->setDeprecated(...$this->getCommentedParamDeprecationMsg())->end()
                             ->end()
                         ->end()
                     ->end()
@@ -112,19 +104,11 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Return the dbal connections node
-     *
-     * @return ArrayNodeDefinition
      */
-    private function getDbalConnectionsNode()
+    private function getDbalConnectionsNode() : ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('connections');
-
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $node = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $node = $treeBuilder->root('connections');
-        }
+        $node        = $treeBuilder->getRootNode();
 
         /** @var ArrayNodeDefinition $connectionNode */
         $connectionNode = $node
@@ -150,6 +134,10 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('profiling_collect_backtrace')
                     ->defaultValue(false)
                     ->info('Enables collecting backtraces when profiling is enabled')
+                ->end()
+                ->booleanNode('profiling_collect_schema_errors')
+                    ->defaultValue(true)
+                    ->info('Enables collecting schema errors when profiling is enabled')
                 ->end()
                 ->scalarNode('server_version')->end()
                 ->scalarNode('driver_class')->end()
@@ -200,7 +188,7 @@ class Configuration implements ConfigurationInterface
      *
      * These keys are available for slave configurations too.
      */
-    private function configureDbalDriverNode(ArrayNodeDefinition $node)
+    private function configureDbalDriverNode(ArrayNodeDefinition $node) : void
     {
         $node
             ->children()
@@ -216,7 +204,7 @@ class Configuration implements ConfigurationInterface
                 ->booleanNode('memory')->end()
                 ->scalarNode('unix_socket')->info('The unix socket to use for MySQL')->end()
                 ->booleanNode('persistent')->info('True to use as persistent connection for the ibm_db2 driver')->end()
-                ->scalarNode('protocol')->info('The protocol to use for the ibm_db2 driver (default to TCPIP if ommited)')->end()
+                ->scalarNode('protocol')->info('The protocol to use for the ibm_db2 driver (default to TCPIP if omitted)')->end()
                 ->booleanNode('service')
                     ->info('True to use SERVICE_NAME as connection parameter instead of SID for Oracle')
                 ->end()
@@ -310,7 +298,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Add the ORM section to configuration tree
      */
-    private function addOrmSection(ArrayNodeDefinition $node)
+    private function addOrmSection(ArrayNodeDefinition $node) : void
     {
         $node
             ->children()
@@ -392,19 +380,11 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Return ORM target entity resolver node
-     *
-     * @return NodeDefinition
      */
-    private function getOrmTargetEntityResolverNode()
+    private function getOrmTargetEntityResolverNode() : NodeDefinition
     {
         $treeBuilder = new TreeBuilder('resolve_target_entities');
-
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $node = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $node = $treeBuilder->root('resolve_target_entities');
-        }
+        $node        = $treeBuilder->getRootNode();
 
         $node
             ->useAttributeAsKey('interface')
@@ -417,19 +397,11 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Return ORM entity listener node
-     *
-     * @return NodeDefinition
      */
-    private function getOrmEntityListenersNode()
+    private function getOrmEntityListenersNode() : NodeDefinition
     {
         $treeBuilder = new TreeBuilder('entity_listeners');
-
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $node = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $node = $treeBuilder->root('entity_listeners');
-        }
+        $node        = $treeBuilder->getRootNode();
 
         $normalizer = static function ($mappings) {
             $entities = [];
@@ -509,19 +481,11 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Return ORM entity manager node
-     *
-     * @return ArrayNodeDefinition
      */
-    private function getOrmEntityManagersNode()
+    private function getOrmEntityManagersNode() : ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder('entity_managers');
-
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $node = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $node = $treeBuilder->root('entity_managers');
-        }
+        $node        = $treeBuilder->getRootNode();
 
         $node
             ->requiresAtLeastOneElement()
@@ -677,21 +641,11 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Return a ORM cache driver node for an given entity manager
-     *
-     * @param string $name
-     *
-     * @return ArrayNodeDefinition
      */
-    private function getOrmCacheDriverNode($name)
+    private function getOrmCacheDriverNode(string $name) : ArrayNodeDefinition
     {
         $treeBuilder = new TreeBuilder($name);
-
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $node = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $node = $treeBuilder->root($name);
-        }
+        $node        = $treeBuilder->getRootNode();
 
         $node
             ->addDefaultsIfNotSet()
@@ -701,42 +655,10 @@ class Configuration implements ConfigurationInterface
                     return ['type' => $v];
                 })
             ->end()
-            ->beforeNormalization()
-                ->ifTrue(static function ($v) : bool {
-                    return is_array($v) && array_key_exists('cache_provider', $v);
-                })
-                ->then(static function ($v) : array {
-                    return ['type' => 'provider'] + $v;
-                })
-            ->end()
             ->children()
-                ->scalarNode('type')
-                    ->defaultNull()
-                    ->beforeNormalization()
-                        ->ifNotInArray([null, 'pool', 'service'])
-                        ->then(static function ($v) use ($name) {
-                            @trigger_error(
-                                sprintf(
-                                    'Using the "%s" type for cache "%s" is deprecated since DoctrineBundle 1.12 and will be dropped in 2.0. Please use the "service" or "pool" types exclusively.',
-                                    $v,
-                                    $name
-                                ),
-                                E_USER_DEPRECATED
-                            );
-
-                            return $v;
-                        })
-                    ->end()
-                ->end()
+                ->scalarNode('type')->defaultNull()->end()
                 ->scalarNode('id')->end()
                 ->scalarNode('pool')->end()
-                ->scalarNode('host')->setDeprecated()->end()
-                ->scalarNode('port')->setDeprecated()->end()
-                ->scalarNode('database')->setDeprecated()->end()
-                ->scalarNode('instance_class')->setDeprecated()->end()
-                ->scalarNode('class')->setDeprecated()->end()
-                ->scalarNode('namespace')->defaultNull()->setDeprecated()->end()
-                ->scalarNode('cache_provider')->defaultNull()->setDeprecated()->end()
             ->end();
 
         return $node;
@@ -744,10 +666,8 @@ class Configuration implements ConfigurationInterface
 
     /**
      * Find proxy auto generate modes for their names and int values
-     *
-     * @return array
      */
-    private function getAutoGenerateModes()
+    private function getAutoGenerateModes() : array
     {
         $constPrefix = 'AUTOGENERATE_';
         $prefixLen   = strlen($constPrefix);
@@ -769,5 +689,28 @@ class Configuration implements ConfigurationInterface
             'names' => $namesArray,
             'values' => $valuesArray,
         ];
+    }
+
+    /**
+     * Returns the correct deprecation param's as an array for setDeprecated.
+     *
+     * Symfony/Config v5.1 introduces a deprecation notice when calling
+     * setDeprecation() with less than 3 args and the getDeprecation method was
+     * introduced at the same time. By checking if getDeprecation() exists,
+     * we can determine the correct param count to use when calling setDeprecated.
+     */
+    private function getCommentedParamDeprecationMsg() : array
+    {
+        $message = 'The doctrine-bundle type commenting features were removed; the corresponding config parameter was deprecated in 2.0 and will be dropped in 3.0.';
+
+        if (method_exists(BaseNode::class, 'getDeprecation')) {
+            return [
+                'doctrine/doctrine-bundle',
+                '2.0',
+                $message,
+            ];
+        }
+
+        return [$message];
     }
 }

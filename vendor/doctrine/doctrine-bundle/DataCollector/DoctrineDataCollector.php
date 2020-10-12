@@ -10,10 +10,10 @@ use Doctrine\ORM\Mapping\ClassMetadataFactory;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Doctrine\ORM\Tools\SchemaValidator;
 use Doctrine\Persistence\ManagerRegistry;
-use Exception;
 use Symfony\Bridge\Doctrine\DataCollector\DoctrineDataCollector as BaseCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Throwable;
 
 class DoctrineDataCollector extends BaseCollector
 {
@@ -26,9 +26,13 @@ class DoctrineDataCollector extends BaseCollector
     /** @var string[] */
     private $groupedQueries;
 
-    public function __construct(ManagerRegistry $registry)
+    /** @var bool */
+    private $shouldValidateSchema;
+
+    public function __construct(ManagerRegistry $registry, bool $shouldValidateSchema = true)
     {
-        $this->registry = $registry;
+        $this->registry             = $registry;
+        $this->shouldValidateSchema = $shouldValidateSchema;
 
         parent::__construct($registry);
     }
@@ -36,7 +40,7 @@ class DoctrineDataCollector extends BaseCollector
     /**
      * {@inheritdoc}
      */
-    public function collect(Request $request, Response $response, Exception $exception = null)
+    public function collect(Request $request, Response $response, Throwable $exception = null)
     {
         parent::collect($request, $response, $exception);
 
@@ -59,25 +63,28 @@ class DoctrineDataCollector extends BaseCollector
 
         /** @var EntityManager $em */
         foreach ($this->registry->getManagers() as $name => $em) {
-            $entities[$name] = [];
-            /** @var ClassMetadataFactory $factory */
-            $factory   = $em->getMetadataFactory();
-            $validator = new SchemaValidator($em);
+            if ($this->shouldValidateSchema) {
+                $entities[$name] = [];
 
-            /** @var ClassMetadataInfo $class */
-            foreach ($factory->getLoadedMetadata() as $class) {
-                if (isset($entities[$name][$class->getName()])) {
-                    continue;
+                /** @var ClassMetadataFactory $factory */
+                $factory   = $em->getMetadataFactory();
+                $validator = new SchemaValidator($em);
+
+                /** @var ClassMetadataInfo $class */
+                foreach ($factory->getLoadedMetadata() as $class) {
+                    if (isset($entities[$name][$class->getName()])) {
+                        continue;
+                    }
+
+                    $classErrors                        = $validator->validateClass($class);
+                    $entities[$name][$class->getName()] = $class->getName();
+
+                    if (empty($classErrors)) {
+                        continue;
+                    }
+
+                    $errors[$name][$class->getName()] = $classErrors;
                 }
-
-                $classErrors                        = $validator->validateClass($class);
-                $entities[$name][$class->getName()] = $class->getName();
-
-                if (empty($classErrors)) {
-                    continue;
-                }
-
-                $errors[$name][$class->getName()] = $classErrors;
             }
 
             /** @var Configuration $emConfig */
