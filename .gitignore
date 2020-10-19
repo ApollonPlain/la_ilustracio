@@ -1,5 +1,11 @@
 vendor
 var
 tests
-
+dev.log
 .env.test
+.env
+
+# Logs (Symfony4)
+/var/log/*
+!var/log/.gitkeep
+
