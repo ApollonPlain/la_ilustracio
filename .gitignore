@@ -5,6 +5,8 @@ dev.log
 .env.test
 .env
 
+.idea
+
 # Logs (Symfony4)
 /var/log/*
 !var/log/.gitkeep
