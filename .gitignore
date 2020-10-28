@@ -5,11 +5,16 @@ dev.log
 .env.test
 .env
 
+symfony.lock
+composer.lock
+
 .idea
+
+config/packages/dev/*
+config/packages/prod/*
 
 # Logs (Symfony4)
 /var/log/*
 !var/log/.gitkeep
 
 /var/cache/*
-
