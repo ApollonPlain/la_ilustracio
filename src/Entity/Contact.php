@@ -24,28 +24,28 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="fullname", type="string", length=255, nullable=false)
+     * @ORM\Column(name="fullname", type="string", length=191, nullable=false)
      */
     private $fullname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     * @ORM\Column(name="email", type="string", length=191, nullable=false)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="message", type="text", length=0, nullable=false)
+     * @ORM\Column(name="message", type="text", length=191, nullable=false)
      */
     private $message;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="subject", type="string", length=255, nullable=false)
+     * @ORM\Column(name="subject", type="string", length=191, nullable=false)
      */
     private $subject;
 

@@ -25,21 +25,21 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="fullname", type="string", length=255, nullable=false)
+     * @ORM\Column(name="fullname", type="string", length=191, nullable=false)
      */
     private $fullname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", length=0, nullable=false)
+     * @ORM\Column(name="content", type="text", length=191, nullable=false)
      */
     private $content;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     * @ORM\Column(name="title", type="string", length=191, nullable=false)
      */
     private $title;
 
@@ -53,7 +53,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=false)
+     * @ORM\Column(name="picture", type="string", length=191, nullable=false)
      */
     private $picture;
 
