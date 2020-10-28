@@ -1,5 +1,5 @@
-vendor
-var
+vendor/*
+var/*
 tests
 dev.log
 .env.test
@@ -10,4 +10,6 @@ dev.log
 # Logs (Symfony4)
 /var/log/*
 !var/log/.gitkeep
+
+/var/cache/*
 
