@@ -10,8 +10,7 @@ composer.lock
 
 .idea
 
-config/packages/dev/*
-config/packages/prod/*
+node_modules
 
 # Logs (Symfony4)
 /var/log/*
@@ -34,3 +33,10 @@ config/packages/prod/*
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###
