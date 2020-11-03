@@ -19,18 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/animate.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/base.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/icomoon.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/magnific-popup.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/salvattore.css" beforeDir="false" />
-    </list>
+    <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,7 +158,6 @@
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
-      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1hVWiUCRviSVJSgFX1XcpfvsSqz" />
@@ -209,7 +197,7 @@
       <workItem from="1603895268995" duration="301000" />
       <workItem from="1603905273922" duration="13451000" />
       <workItem from="1604151770140" duration="7925000" />
-      <workItem from="1604415153274" duration="308000" />
+      <workItem from="1604415153274" duration="760000" />
     </task>
     <servers />
   </component>
