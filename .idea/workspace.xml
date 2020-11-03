@@ -20,9 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/la_ilustracion.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/la_ilustracion.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/animate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/icomoon.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/magnific-popup.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/main.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/salvattore.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +173,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1hVWiUCRviSVJSgFX1XcpfvsSqz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -173,7 +181,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../example/my_project" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
   </component>
@@ -200,7 +208,8 @@
       <workItem from="1603807834927" duration="4726000" />
       <workItem from="1603895268995" duration="301000" />
       <workItem from="1603905273922" duration="13451000" />
-      <workItem from="1604151770140" duration="2044000" />
+      <workItem from="1604151770140" duration="7925000" />
+      <workItem from="1604415153274" duration="308000" />
     </task>
     <servers />
   </component>
@@ -220,25 +229,25 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="881" y="298" key="FileChooserDialogImpl" timestamp="1603108024380">
+    <state x="881" y="298" key="FileChooserDialogImpl" timestamp="1604408347441">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="881" y="298" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1603108024380" />
+    <state x="881" y="298" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1604408347441" />
     <state x="454" y="155" key="SettingsEditor" timestamp="1603967154229">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="454" y="155" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1603967154229" />
-    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1604077212645">
+    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1604415460589">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604077212645" />
+    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604415460589" />
     <state x="624" y="237" key="run.anything.popup" timestamp="1604239202503">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="624" y="237" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604239202503" />
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1604239181035">
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1604415583815">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604239181035" />
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604415583815" />
   </component>
 </project>
