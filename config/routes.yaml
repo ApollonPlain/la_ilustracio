@@ -1,6 +1,6 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index:
+    path: /
+    controller: App\Controller\DefaultController::listAction
 
 #redirect_to_default_locale:
 #  path: /
@@ -9,13 +9,11 @@
 #    path: /fr
 #    path: /%locale%
 
-
-
-redirect_to_default_locale:
-  path:       /{_locale}/
-  controller: App\Controller\DefaultController::listAction
-  requirements:
-    _locale: en|fr|es
+#redirect_to_default_locale:
+#  path:       /{_locale}/
+#  controller: App\Controller\DefaultController::listAction
+#  requirements:
+#    _locale: en|fr|es
 
 logout:
   path: "/logout"
