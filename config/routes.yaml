@@ -3,10 +3,10 @@
 #    controller: App\Controller\DefaultController::index
 
 redirect_to_default_locale:
-  path: ""
+  path: /
   defaults:
     _controller: App\Controller\DefaultController::listAction
-    path: /en
+#    path: /fr
 #    path: /%locale%
 
 logout:
@@ -17,6 +17,6 @@ app:
   type: annotation
   prefix: "{_locale}"
   requirements:
-    _locale: "|en|fr|es"
+    _locale: fr|en|es
   defaults:
-    _locale: en
+    _locale: fr
