@@ -1,5 +1,7 @@
 index:
     path: /
+    resource: '../src/Controller/'
+    type: annotation
     controller: App\Controller\DefaultController::listAction
 
 #redirect_to_default_locale:
