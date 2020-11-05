@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="" />
+    <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes/annotations.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/annotations.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -169,9 +172,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../example/my_project" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/routes" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config/routes" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -197,7 +205,8 @@
       <workItem from="1603895268995" duration="301000" />
       <workItem from="1603905273922" duration="13451000" />
       <workItem from="1604151770140" duration="7925000" />
-      <workItem from="1604415153274" duration="760000" />
+      <workItem from="1604415153274" duration="5289000" />
+      <workItem from="1604484137168" duration="11304000" />
     </task>
     <servers />
   </component>
@@ -221,21 +230,21 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="881" y="298" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1604408347441" />
-    <state x="454" y="155" key="SettingsEditor" timestamp="1603967154229">
+    <state x="454" y="155" key="SettingsEditor" timestamp="1604505028762">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="454" y="155" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1603967154229" />
-    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1604415460589">
+    <state x="454" y="155" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1604505028762" />
+    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1604576768217">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604415460589" />
+    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604576768217" />
     <state x="624" y="237" key="run.anything.popup" timestamp="1604239202503">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="624" y="237" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604239202503" />
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1604415583815">
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1604576829147">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604415583815" />
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604576829147" />
   </component>
 </project>
