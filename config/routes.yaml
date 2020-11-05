@@ -1,7 +1,17 @@
 #index:
-redirect_to_default_locale:
-    path: /
-    controller: App\Controller\DefaultController::listAction
+
+homepage:
+  path: /{_locale}
+  controller: App\Controller\DefaultController::listAction
+  requirements:
+    _locale: '%app_locales%'
+  defaults:
+    template: default/homepage.html.twig
+    _locale: '%locale%'
+
+#redirect_to_default_locale:
+#    path: /
+#    controller: App\Controller\DefaultController::listAction
 
 #redirect_to_default_locale:
 #  path: /
@@ -19,9 +29,9 @@ redirect_to_default_locale:
 logout:
   path: "/logout"
 
-app:
-  resource: '../src/Controller/'
-  type: annotation
+#app:
+#  resource: '../src/Controller/'
+#  type: annotation
 #  prefix: "{_locale}"
 #  requirements:
 #    _locale: fr|en|es
