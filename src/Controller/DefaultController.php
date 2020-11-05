@@ -13,7 +13,7 @@ class DefaultController extends AbstractController
 {
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", methods="GET|POST", name="homepage")
      */
      public function listAction(Request $request)
      {

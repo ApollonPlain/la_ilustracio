@@ -46,7 +46,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="register")
+     * @Route("/register", methods="GET|POST", name="register")
      */
     public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $em)
     {
