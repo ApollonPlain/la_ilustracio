@@ -42,7 +42,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=191)
      * @Assert\NotBlank()
      */
     private $fullName;
@@ -59,7 +59,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", unique=true, length=191)
      * @Assert\Email()
      */
     private $email;
@@ -67,7 +67,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=191)
      */
     private $password;
 

@@ -47,7 +47,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=191)
      * @Assert\NotBlank
      */
     private $title;
@@ -55,7 +55,7 @@ class Post
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=191)
      */
     private $slug;
 
@@ -64,14 +64,14 @@ class Post
      *
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message="post.blank_summary")
-     * @Assert\Length(max=255)
+     * @Assert\Length(max=191)
      */
     private $summary;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", length=191)
      * @Assert\NotBlank(message="post.blank_content")
      * @Assert\Length(min=10, minMessage="post.too_short_content")
      */
