@@ -33,3 +33,11 @@ node_modules
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+my_project/node_modules
+my_project/.env
+my_project/.env.test
+my_project/symfony.lock
+my_project/vendor
+my_project/var
+my_project/data
