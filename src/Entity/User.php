@@ -1,71 +1,101 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * User
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="user")
  *
- * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="UNIQ_8D93D649E7927C74", columns={"email"}), @ORM\UniqueConstraint(name="UNIQ_8D93D649F85E0677", columns={"username"})})
- * @ORM\Entity
+ * Defines the properties of the User entity to represent the application users.
+ * See https://symfony.com/doc/current/doctrine.html#creating-an-entity-class
+ *
+ * Tip: if you have an existing database, you can generate these entity class automatically.
+ * See https://symfony.com/doc/current/doctrine/reverse_engineering.html
+ *
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=191, nullable=false)
+     * @ORM\Column(type="string", length=191)
+     * @Assert\NotBlank()
+     */
+    private $fullName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", unique=true, length=191)
+     * @Assert\NotBlank()
+     * @Assert\Length(min=2, max=50)
      */
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=191, nullable=false)
+     * @ORM\Column(type="string", unique=true, length=191)
+     * @Assert\Email()
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=60, nullable=false)
+     * @ORM\Column(type="string", length=191)
      */
     private $password;
 
     /**
+     * @var array
+     *
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="registered_at", type="datetime", nullable=false)
+     * @ORM\Column(type="datetime")
      */
     private $registeredAt;
-
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="is_admin", type="boolean", nullable=false)
-     */
-    private $isAdmin = false;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fullname", type="string", length=191, nullable=false)
-     */
-    private $fullname;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setFullName(string $fullName): void
+    {
+        $this->fullName = $fullName;
+    }
+
+    public function getFullName(): ?string
+    {
+        return $this->fullName;
     }
 
     public function getUsername(): ?string
@@ -73,11 +103,9 @@ class User
         return $this->username;
     }
 
-    public function setUsername(string $username): self
+    public function setUsername(string $username): void
     {
         $this->username = $username;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -85,11 +113,9 @@ class User
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email): void
     {
         $this->email = $email;
-
-        return $this;
     }
 
     public function getPassword(): ?string
@@ -97,47 +123,81 @@ class User
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password): void
     {
         $this->password = $password;
-
-        return $this;
     }
 
-    public function getRegisteredAt(): ?\DateTimeInterface
+    /**
+     * Returns the roles or permissions granted to the user for security.
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+
+        // guarantees that a user always has at least one role for security
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
+    public function getRegisteredAt(): ?\DateTime
     {
         return $this->registeredAt;
     }
 
-    public function setRegisteredAt(\DateTimeInterface $registeredAt): self
+    public function setRegisteredAt(\DateTime $registeredAt): void
     {
         $this->registeredAt = $registeredAt;
-
-        return $this;
     }
 
-    public function getIsAdmin(): ?bool
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * {@inheritdoc}
+     */
+    public function getSalt(): ?string
     {
-        return $this->isAdmin;
+        // We're using bcrypt in security.yaml to encode the password, so
+        // the salt value is built-in and and you don't have to generate one
+        // See https://en.wikipedia.org/wiki/Bcrypt
+
+        return null;
     }
 
-    public function setIsAdmin(bool $isAdmin): self
+    /**
+     * Removes sensitive data from the user.
+     *
+     * {@inheritdoc}
+     */
+    public function eraseCredentials(): void
     {
-        $this->isAdmin = $isAdmin;
-
-        return $this;
+        // if you had a plainPassword property, you'd nullify it here
+        // $this->plainPassword = null;
     }
 
-    public function getFullname(): ?string
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
     {
-        return $this->fullname;
+        // add $this->salt too if you don't use Bcrypt or Argon2i
+        return serialize([$this->id, $this->username, $this->password]);
     }
 
-    public function setFullname(string $fullname): self
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
     {
-        $this->fullname = $fullname;
-
-        return $this;
+        // add $this->salt too if you don't use Bcrypt or Argon2i
+        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
     }
-
 }

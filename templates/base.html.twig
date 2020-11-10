@@ -1,98 +1,162 @@
+{#
+   This is the base template used as the application layout which contains the
+   common elements and decorates all the other templates.
+   See https://symfony.com/doc/current/templates.html#template-inheritance-and-layouts
+#}
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale }}">
     <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>The time of a Symfony Blog</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="This blog is a wall especially dedicated to freedom of expression each opinion could be visible of all." />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>{% block title %} La Ilustracion {% endblock %}</title>
+        <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <link rel="icon" type="image/x-icon" href="{{ asset('./favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
 
-        <!-- Google Webfonts -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-        
-        {% block stylesheets %}{% endblock %}
-        <!-- Main.css -->
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-        <!-- Animate.css -->
-        <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-        <!-- Icomoon Icon Fonts-->
-        <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
-        <!-- Magnific Popup -->
-        <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}">
-        <!-- Salvattore -->
-        <link rel="stylesheet" href="{{ asset('css/salvattore.css') }}">
-        <!-- Theme Style -->
-        <link rel="stylesheet" href="{{ asset('css/base.css') }}">
-        <!-- Modernizr JS -->
-        <script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
-        <!-- FOR IE9 below -->
-        <!--[if lt IE 9]>
-        <script src="{{ asset('js/respond.min.js') }}"></script>
-        <![endif]-->
+    <body id="{% block body_id %}{% endblock %}">
 
-	</head>
-    <body>
-        {% for label, messages in app.flashes(['success', 'warning', 'error']) %}
-            {% for message in messages %}
-                <div class="alert alert-{{ label|replace({'error': 'danger'}) }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        {% endfor %}
-        {{ include ('/_menu.html.twig') }}
-        <header id="fh5co-header" role="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="#" class="fh5co-menu-btn js-fh5co-menu-btn">Menu <i class="icon-menu"></i></a>
-                        <a class="navbar-brand" href="{{ path('homepage') }}"><img src="{{ asset('images/logo.png')}}" style="width: 150px;"/></a>
+        {% block header %}
+            <header>
+                <div class="navbar navbar-default navbar-static-top" role="navigation">
+                    <div class="container">
+                        <div class="navbar-header col-md-3 col-lg-2">
+                            <a class="navbar-brand" href="{{ path('homepage') }}">
+                                La Ilustracion
+                            </a>
+
+                            <button type="button" class="navbar-toggle"
+                                    data-toggle="collapse"
+                                    data-target=".navbar-collapse">
+                                <span class="sr-only">{{ 'menu.toggle_nav'|trans }}</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav navbar-right">
+
+                                {% block header_navigation_links %}
+                                    <li>
+                                        <a href="{{ path('blog_index') }}">
+                                            <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
+                                        </a>
+                                    </li>
+
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <li>
+                                            <a href="{{ path('admin_post_index') }}">
+                                                <i class="fa fa-lock" aria-hidden="true"></i> {{ 'menu.admin'|trans }}
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endblock %}
+
+                                <li>
+                                    <a href="{{ path('blog_search') }}"> <i class="fa fa-search"></i> {{ 'menu.search'|trans }}</a>
+                                </li>
+
+                                {% if app.user %}
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="user">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                            <span class="caret"></span>
+                                            <span class="sr-only">{{ app.user.fullname }}</span>
+                                        </a>
+                                        <ul class="dropdown-menu user" role="menu" aria-labelledby="user">
+                                            <li>
+                                                <a href="{{ path('user_edit') }}">
+                                                    <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
+                                                </a>
+                                            </li>
+                                            <li class="divider"></li>
+                                            <li>
+                                                <a href="{{ path('security_logout') }}">
+                                                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                {% endif %}
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="locales">
+                                        <i class="fa fa-globe" aria-hidden="true"></i>
+                                        <span class="caret"></span>
+                                        <span class="sr-only">{{ 'menu.choose_language'|trans }}</span>
+                                    </a>
+                                    <ul class="dropdown-menu locales" role="menu" aria-labelledby="locales">
+                                        {% for locale in locales() %}
+                                            <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"{% else %}aria-checked="false"{% endif %} role="menuitem"><a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }} <small>{{ locale.code[0:2] }}</small></a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
-        <!-- END .header -->
+            </header>
+        {% endblock %}
 
-        <div id="fh5co-main">
-            <div class="container">
-                <div class="row">   
-                    {% block body %}{% endblock %}
+        <div class="container body-container">
+            {% block body %}
+                <div class="row">
+                    <div id="main" class="col-sm-9">
+                        {{ include('default/_flash_messages.html.twig') }}
+
+                        {% block main %}{% endblock %}
+                    </div>
+
+                    <div id="sidebar" class="col-sm-3">
+                        {% block sidebar %}
+                            {{ render_esi(controller('Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction', {
+                                'template': 'blog/about.html.twig',
+                                'sharedAge': 600,
+                                '_locale': app.request.locale
+                            })) }}
+                        {% endblock %}
+                    </div>
                 </div>
-            </div>
+            {% endblock %}
         </div>
 
-	<footer id="fh5co-footer">
-		<div class="container">
-			<div class="row row-padded">
-				<div class="col-md-12 text-center">
-					<p class="fh5co-social-icons">
-						<a href="#"><i class="icon-twitter"></i></a>
-						<a href="#"><i class="icon-facebook"></i></a>
-						<a href="#"><i class="icon-instagram"></i></a>
-						<a href="#"><i class="icon-linkedin"></i></a>
-					</p>
-					<p><small>2017 &copy; Dany PHENGSIAROUN & Fayçal OSSENI. All Rights Reserved.</small></p>
-				</div>
-			</div>
-		</div>
-	</footer>
+        {% block footer %}
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div id="footer-copyright" class="col-md-6">
+                            <p>&copy; {{ 'now'|date('Y') }} - La Ilustracion</p>
+                            <p>{{ 'mit_license'|trans }}</p>
+                        </div>
+                        <div id="footer-resources" class="col-md-6">
+                            <p>
+                                <a href="https://twitter.com/symfony" title="Symfony Twitter">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://www.facebook.com/SensioLabs" title="SensioLabs Facebook">
+                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://symfony.com/blog/" title="Symfony Blog">
+                                    <i class="fa fa-rss" aria-hidden="true"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
 
-        <!-- jQuery -->
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <!-- jQuery Easing -->
-        <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
-        <!-- Bootstrap -->
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <!-- Waypoints -->
-        <script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
-        <!-- Magnific Popup -->
-        <script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-        <!-- Salvattore -->
-        <script src="{{ asset('js/salvattore.min.js') }}"></script>
-        <!-- Main JS -->
-        <script src="{{ asset('js/main.js') }}"></script>
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+        {# it's not mandatory to set the timezone in localizeddate(). This is done to
+           avoid errors when the 'intl' PHP extension is not available and the application
+           is forced to use the limited "intl polyfill", which only supports UTC and GMT #}
+        <!-- Page rendered on {{ 'now'|format_datetime('long', 'long', '', 'UTC') }} -->
     </body>
 </html>

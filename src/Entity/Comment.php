@@ -1,59 +1,93 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use function Symfony\Component\String\u;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Comment
- *
- * @ORM\Table(name="comment", indexes={@ORM\Index(name="IDX_9474526C4B89032C", columns={"post_id"}), @ORM\Index(name="IDX_9474526CA76ED395", columns={"user_id"})})
  * @ORM\Entity
+ * @ORM\Table(name="comment")
+ *
+ * Defines the properties of the Comment entity to represent the blog comments.
+ * See https://symfony.com/doc/current/doctrine.html#creating-an-entity-class
+ *
+ * Tip: if you have an existing database, you can generate these entity class automatically.
+ * See https://symfony.com/doc/current/doctrine/reverse_engineering.html
+ *
  */
 class Comment
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
+     * @var Post
+     *
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $post;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", length=191, nullable=false)
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="comment.blank")
+     * @Assert\Length(
+     *     min=5,
+     *     minMessage="comment.too_short",
+     *     max=10000,
+     *     maxMessage="comment.too_long"
+     * )
      */
     private $content;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="published_at", type="datetime", nullable=false)
+     * @ORM\Column(type="datetime")
      */
     private $publishedAt;
 
     /**
-     * @var \Post
+     * @var User
      *
-     * @ORM\ManyToOne(targetEntity="Post")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="post_id", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $post;
+    private $author;
+
+    public function __construct()
+    {
+        $this->publishedAt = new \DateTime();
+    }
 
     /**
-     * @var \User
-     *
-     * @ORM\ManyToOne(targetEntity="User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * })
+     * @Assert\IsTrue(message="comment.is_spam")
      */
-    private $user;
+    public function isLegitComment(): bool
+    {
+        $containsInvalidCharacters = null !== u($this->content)->indexOf('@');
+
+        return !$containsInvalidCharacters;
+    }
 
     public function getId(): ?int
     {
@@ -65,23 +99,29 @@ class Comment
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(string $content): void
     {
         $this->content = $content;
-
-        return $this;
     }
 
-    public function getPublishedAt(): ?\DateTimeInterface
+    public function getPublishedAt(): \DateTime
     {
         return $this->publishedAt;
     }
 
-    public function setPublishedAt(\DateTimeInterface $publishedAt): self
+    public function setPublishedAt(\DateTime $publishedAt): void
     {
         $this->publishedAt = $publishedAt;
+    }
 
-        return $this;
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(User $author): void
+    {
+        $this->author = $author;
     }
 
     public function getPost(): ?Post
@@ -89,24 +129,8 @@ class Comment
         return $this->post;
     }
 
-    public function setPost(?Post $post): self
+    public function setPost(Post $post): void
     {
         $this->post = $post;
-
-        return $this;
     }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-
 }

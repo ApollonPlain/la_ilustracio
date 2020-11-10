@@ -1,176 +1,78 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace App\Controller;
 
+use App\Form\Type\ChangePasswordType;
+use App\Form\UserType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\User;
-use App\Form\Type\UserRegistrationType;
-use App\Form\Type\UserUpdatePasswordType;
-use App\Form\Type\UserEditProfileType;
-use Ramsey\Uuid\Uuid;
 
+/**
+ * Controller used to manage current user.
+ *
+ * @Route("/profile")
+ * @IsGranted("ROLE_USER")
+ *
+ */
 class UserController extends AbstractController
 {
     /**
-     * @Route("/update-password", name="update_password")
+     * @Route("/edit", methods="GET|POST", name="user_edit")
      */
-    public function updatePasswordAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $em, UserInterface $user)
+    public function edit(Request $request): Response
     {
-        $form = $this->createForm(UserUpdatePasswordType::class);
+        $user = $this->getUser();
 
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $plainPassword = $form->get('new_password')->getData();
-
-            $password = $passwordEncoder->encodePassword($user, $plainPassword);
-            $user->setPassword($password);
-
-            $em->flush();// execute all SQL queries
-
-            $this->addFlash('success', 'Password updated!');
-
-            return $this->redirectToRoute('homepage');
-        }
-
-        return $this->render('user/update_password.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/register", methods="GET|POST", name="register")
-     */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, EntityManagerInterface $em)
-    {
-        //$user = new User((string) Uuid::uuid4());
-        $user = new User();
-
-        $form = $this->createForm(UserRegistrationType::class, $user);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setRegisteredAt(new \DateTime());
-            $user->setIsAdmin(false);
-
-            $plainPassword = $form->get('password')->getData();
-
-            $password = $passwordEncoder->encodePassword($user, $plainPassword);
-            $user->setPassword($password);
-
-            $em->persist($user);// prepare to insert into the database
-            $em->flush();// execute all SQL queries
-
-            $this->addFlash('success', 'Welcome!');
-
-            return $this->redirectToRoute('homepage');
-        }
-
-        return $this->render('user/register.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-     /**
-     * @Route("/user/{id}/edit", name="edit_profile")
-     */
-    public function editProfileAction(Request $request, User $user)
-    {
-        $form = $this->createForm(UserEditProfileType::class, $user);
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'Profile updated!');
+            $this->addFlash('success', 'user.updated_successfully');
 
-            return $this->redirectToRoute('profile');
+            return $this->redirectToRoute('user_edit');
         }
 
-        return $this->render('user/edit_profile.html.twig', [
+        return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/login", name="login")
+     * @Route("/change-password", methods="GET|POST", name="user_change_password")
      */
-    public function loginAction(AuthenticationUtils $authUtils)
+    public function changePassword(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
-        // get the login error if there is one
-        $error = $authUtils->getLastAuthenticationError();
+        $user = $this->getUser();
 
-        // last username entered by the user
-        $lastUsername = $authUtils->getLastUsername();
-
-        return $this->render('user/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error' => $error,
-        ]);
-    }
-
-     /**
-     * @Route("/admin/users", name="admin_user_list")
-     */
-    public function listAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $filter = $request->query->get('filter', 'all');
-        $users = $em->getRepository(User::class)->findForList($filter);
-
-        return $this->render('user/admin/list.html.twig', [
-            'users' => $users,
-        ]);
-    }
-
-    /**
-     * @Route("/admin/users/{id}", name="admin_user_show")
-     * @Security("is_granted('ROLE_ADMIN')")
-     */
-     public function showAction(Request $request, User $user)
-     {
-         return $this->render('user/admin/show.html.twig', [
-             'user' => $user,
-         ]);
-     }
-
-     /**
-     * @Route("/admin/users/{id}/edit", name="admin_user_edit")
-     */
-    public function editAction(Request $request, User $user)
-    {
-        $form = $this->createForm(UserEditProfileType::class, $user);
+        $form = $this->createForm(ChangePasswordType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $user->setPassword($encoder->encodePassword($user, $form->get('newPassword')->getData()));
+
             $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'User updated!');
-
-            return $this->redirectToRoute('admin_user_list');
+            return $this->redirectToRoute('security_logout');
         }
 
-        return $this->render('user/admin/edit.html.twig', [
-            'user' => $user,
+        return $this->render('user/change_password.html.twig', [
             'form' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/profile/", name="profile")
-     */
-    public function profileAction(Request $request)
-    {
-        return $this->render('user/profile.html.twig');
     }
 }

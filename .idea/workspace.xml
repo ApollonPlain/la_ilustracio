@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes/annotations.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes/annotations.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -207,6 +204,10 @@
       <workItem from="1604151770140" duration="7925000" />
       <workItem from="1604415153274" duration="5289000" />
       <workItem from="1604484137168" duration="11304000" />
+      <workItem from="1604766702237" duration="3128000" />
+      <workItem from="1604918460664" duration="762000" />
+      <workItem from="1604919315240" duration="4367000" />
+      <workItem from="1605007953536" duration="3677000" />
     </task>
     <servers />
   </component>
@@ -225,26 +226,31 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/my_project_name" />
+    </ignored-roots>
+  </component>
   <component name="WindowStateProjectService">
     <state x="881" y="298" key="FileChooserDialogImpl" timestamp="1604408347441">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="881" y="298" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1604408347441" />
-    <state x="454" y="155" key="SettingsEditor" timestamp="1604505028762">
+    <state x="454" y="155" key="SettingsEditor" timestamp="1604919342280">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="454" y="155" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1604505028762" />
-    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1604576768217">
+    <state x="454" y="155" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1604919342280" />
+    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1605010082239">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604576768217" />
+    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1605010082239" />
     <state x="624" y="237" key="run.anything.popup" timestamp="1604239202503">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="624" y="237" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604239202503" />
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1604576829147">
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1605009634060">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604576829147" />
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1605009634060" />
   </component>
 </project>
