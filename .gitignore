@@ -41,3 +41,5 @@ my_project/symfony.lock
 my_project/vendor
 my_project/var
 my_project/data
+
+public/uploads/pictures/*

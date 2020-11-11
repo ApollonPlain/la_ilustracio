@@ -15,6 +15,7 @@ use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use App\Security\PostVoter;
+use App\Service\FileUploader;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -68,7 +69,7 @@ class BlogController extends AbstractController
      * to constraint the HTTP methods each controller responds to (by default
      * it responds to all methods).
      */
-    public function new(Request $request, SluggerInterface $slugger): Response
+    public function new(Request $request, FileUploader $fileUploader): Response
     {
         $post = new Post();
         $post->setAuthor($this->getUser());
@@ -86,26 +87,9 @@ class BlogController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $pictureFile = $form->get('picture')->getData();
-
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
             if ($pictureFile) {
-                $originalFilename = pathinfo($pictureFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $pictureFile->guessExtension();
-
-                // Move the file to the directory where brochures are stored
-                try {
-                    $pictureFile->move(
-                        $this->getParameter('pictures_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-
-                $post->setPicture($newFilename);
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $post->setPicture($pictureFileName);
             }
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
