@@ -16,6 +16,7 @@ use App\Form\PostType;
 use App\Repository\PostRepository;
 use App\Security\PostVoter;
 use App\Service\FileUploader;
+use PhpParser\Node\Scalar\MagicConst\File;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -136,12 +137,18 @@ class BlogController extends AbstractController
      * @Route("/{id<\d+>}/edit", methods="GET|POST", name="admin_post_edit")
      * @IsGranted("edit", subject="post", message="Posts can only be edited by their authors.")
      */
-    public function edit(Request $request, Post $post): Response
+    public function edit(Request $request, Post $post, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $pictureFile = $form->get('picture')->getData();
+            if ($pictureFile) {
+                $pictureFileName = $fileUploader->upload($pictureFile);
+                $post->setPicture($pictureFileName);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'post.updated_successfully');
