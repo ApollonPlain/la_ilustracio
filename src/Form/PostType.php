@@ -53,18 +53,31 @@ class PostType extends AbstractType
         // $builder->add('title', null, ['required' => false, ...]);
 
         $builder
-            ->add('title', null, [
+            ->add('titleFR', null, [
                 'attr' => ['autofocus' => true],
-                'label' => 'label.title',
+                'label' => 'label.title_fr',
             ])
-            ->add('summary', TextareaType::class, [
+            ->add('summaryFR', TextareaType::class, [
                 'help' => 'help.post_summary',
-                'label' => 'label.summary',
+                'label' => 'label.summary_fr',
             ])
-            ->add('content', null, [
+            ->add('contentFR', null, [
                 'attr' => ['rows' => 20],
                 'help' => 'help.post_content',
-                'label' => 'label.content',
+                'label' => 'label.content_fr',
+            ])
+            ->add('titleES', null, [
+                'attr' => ['autofocus' => true],
+                'label' => 'label.title_es',
+            ])
+            ->add('summaryES', TextareaType::class, [
+                'help' => 'help.post_summary',
+                'label' => 'label.summary_es',
+            ])
+            ->add('contentES', null, [
+                'attr' => ['rows' => 20],
+                'help' => 'help.post_content',
+                'label' => 'label.content_es',
             ])
             ->add('publishedAt', DateTimePickerType::class, [
                 'label' => 'label.published_at',
@@ -96,8 +109,8 @@ class PostType extends AbstractType
             ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
                 /** @var Post */
                 $post = $event->getData();
-                if (null !== $postTitle = $post->getTitle()) {
-                    $post->setSlug($this->slugger->slug($postTitle)->lower());
+                if (null !== $postTitleFR = $post->getTitleFR()) {
+                    $post->setSlug($this->slugger->slug($postTitleFR)->lower());
                 }
             })
         ;

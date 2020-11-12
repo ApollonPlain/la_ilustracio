@@ -185,10 +185,13 @@
                 <source>action.change_password</source>
                 <target>Modifier le mot de passe</target>
             </trans-unit>
-
-            <trans-unit id="label.title">
-                <source>label.title</source>
-                <target>Titre</target>
+            <trans-unit id="label.title_fr">
+                <source>label.title_fr</source>
+                <target>Titre en français</target>
+            </trans-unit>
+            <trans-unit id="label.title_es">
+                <source>label.title_es</source>
+                <target>Titre en espagnol</target>
             </trans-unit>
             <trans-unit id="action.close">
                 <source>action.close</source>
@@ -234,13 +237,20 @@
                 <source>label.role</source>
                 <target>Rôle</target>
             </trans-unit>
-            <trans-unit id="label.content">
-                <source>label.content</source>
-                <target>Contenu</target>
+            <trans-unit id="label.content_fr">
+                <source>label.content_fr</source>
+                <target>Contenu en français</target>
             </trans-unit>
-            <trans-unit id="label.summary">
-                <source>label.summary</source>
-                <target>Résumé</target>
+            <trans-unit id="label.content_es">
+                <source>label.content_es</source>
+                <target>Contenu en espagnol</target>
+            </trans-unit>            <trans-unit id="label.summary_fr">
+                <source>label.summary_fr</source>
+                <target>Résumé en français</target>
+            </trans-unit>
+            <trans-unit id="label.summary_es">
+                <source>label.summary_es</source>
+                <target>Résumé en espagnol</target>
             </trans-unit>
             <trans-unit id="label.published_at">
                 <source>label.published_at</source>

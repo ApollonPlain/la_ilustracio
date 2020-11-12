@@ -3,18 +3,19 @@
 {% block body_id 'admin_post_show' %}
 
 {% block main %}
-    <h1>{{ post.title }}</h1>
 
+    <h1>{{ app.request.locale == "fr" ? post.titleFR : post.titleES }}</h1>
+{#    <h1>{{ app.request.locale }}</h1>#}
     <p class="post-metadata">
         <span class="metadata"><i class="fa fa-calendar"></i> {{ post.publishedAt|format_datetime('long', 'medium', '', 'UTC') }}</span>
         <span class="metadata"><i class="fa fa-user"></i> {{ post.author.fullName }}</span>
     </p>
 
     <div class="well">
-        <p class="m-b-0"><strong>{{ 'label.summary'|trans }}</strong>: {{ post.summary }}</p>
+        <p class="m-b-0"><strong>{{ 'label.summary'|trans }}</strong>: {{ app.request.locale == "fr" ? post.summaryFR : post.summaryES }}</p>
     </div>
 
-    {{ post.content|markdown_to_html|sanitize_html }}
+    {{ app.request.locale == "fr" ? post.contentFR|markdown_to_html|sanitize_html : post.contentES|markdown_to_html|sanitize_html }}
 
     {{ include('blog/_post_tags.html.twig') }}
 {% endblock %}

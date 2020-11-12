@@ -47,7 +47,16 @@ class Post
      * @ORM\Column(type="string", length=191)
      * @Assert\NotBlank
      */
-    private $title;
+    private $titleFR;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=191)
+     * @Assert\NotBlank
+     */
+    private $titleES;
+
 
     /**
      * @var string
@@ -63,7 +72,16 @@ class Post
      * @Assert\NotBlank(message="post.blank_summary")
      * @Assert\Length(max=191)
      */
-    private $summary;
+    private $summaryFR;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=191)
+     * @Assert\NotBlank(message="post.blank_summary")
+     * @Assert\Length(max=191)
+     */
+    private $summaryES;
 
     /**
      * @var string
@@ -72,7 +90,16 @@ class Post
      * @Assert\NotBlank(message="post.blank_content")
      * @Assert\Length(min=10, minMessage="post.too_short_content")
      */
-    private $content;
+    private $contentFR;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank(message="post.blank_content")
+     * @Assert\Length(min=10, minMessage="post.too_short_content")
+     */
+    private $contentES;
 
     /**
      * @var \DateTime
@@ -130,36 +157,6 @@ class Post
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
-
-    public function getSlug(): ?string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): void
-    {
-        $this->slug = $slug;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(string $content): void
-    {
-        $this->content = $content;
     }
 
     public function getPublishedAt(): \DateTime
@@ -237,5 +234,89 @@ class Post
     public function setPicture(string $picture): void
     {
         $this->picture = $picture;
+    }
+
+    public function getTitleFR(): ?string
+    {
+        return $this->titleFR;
+    }
+
+    public function setTitleFR(string $titleFR): self
+    {
+        $this->titleFR = $titleFR;
+
+        return $this;
+    }
+
+    public function getTitleES(): ?string
+    {
+        return $this->titleES;
+    }
+
+    public function setTitleES(string $titleES): self
+    {
+        $this->titleES = $titleES;
+
+        return $this;
+    }
+
+    public function getSummaryFR(): ?string
+    {
+        return $this->summaryFR;
+    }
+
+    public function setSummaryFR(string $summaryFR): self
+    {
+        $this->summaryFR = $summaryFR;
+
+        return $this;
+    }
+
+    public function getSummaryES(): ?string
+    {
+        return $this->summaryES;
+    }
+
+    public function setSummaryES(string $summaryES): self
+    {
+        $this->summaryES = $summaryES;
+
+        return $this;
+    }
+
+    public function getContentFR(): ?string
+    {
+        return $this->contentFR;
+    }
+
+    public function setContentFR(string $contentFR): self
+    {
+        $this->contentFR = $contentFR;
+
+        return $this;
+    }
+
+    public function getContentES(): ?string
+    {
+        return $this->contentES;
+    }
+
+    public function setContentES(string $contentES): self
+    {
+        $this->contentES = $contentES;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }

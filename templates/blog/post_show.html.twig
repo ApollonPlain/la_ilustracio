@@ -3,14 +3,14 @@
 {% block body_id 'blog_post_show' %}
 
 {% block main %}
-    <h1>{{ post.title }}</h1>
+    <h1>{{ app.request.locale == "fr" ? post.titleFR: post.titleES }}</h1>
 
     <p class="post-metadata">
         <span class="metadata"><i class="fa fa-calendar"></i> {{ post.publishedAt|format_datetime('long', 'medium', '', 'UTC') }}</span>
         <span class="metadata"><i class="fa fa-user"></i> {{ post.author.fullName }}</span>
     </p>
 
-    {{ post.content|markdown_to_html|sanitize_html }}
+    {{ app.request.locale == "fr" ? post.contentFR|markdown_to_html|sanitize_html : post.contentES|markdown_to_html|sanitize_html }}
 
     {{ include('blog/_post_tags.html.twig') }}
 

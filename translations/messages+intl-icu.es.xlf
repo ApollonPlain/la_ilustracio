@@ -166,9 +166,13 @@
                 <target>Acceder al backend</target>
             </trans-unit>
 
-            <trans-unit id="label.title">
-                <source>label.title</source>
-                <target>Título</target>
+            <trans-unit id="label.title_fr">
+                <source>label.title_fr</source>
+                <target>Título en francés</target>
+            </trans-unit>
+            <trans-unit id="label.title_es">
+                <source>label.title_es</source>
+                <target>Título en español</target>
             </trans-unit>
             <trans-unit id="action.close">
                 <source>action.close</source>
@@ -194,13 +198,21 @@
                 <source>label.role</source>
                 <target>Rol</target>
             </trans-unit>
-            <trans-unit id="label.content">
-                <source>label.content</source>
-                <target>Contenido</target>
+            <trans-unit id="label.content_fr">
+                <source>label.content_fr</source>
+                <target>Contenido en francés</target>
             </trans-unit>
-            <trans-unit id="label.summary">
-                <source>label.summary</source>
-                <target>Resumen</target>
+            <trans-unit id="label.content_es">
+                <source>label.content_es</source>
+                <target>Contenido en español</target>
+            </trans-unit>
+            <trans-unit id="label.summary_fr">
+                <source>label.summary_fr</source>
+                <target>Resumen en francés</target>
+            </trans-unit>
+            <trans-unit id="label.summary_es">
+                <source>label.summary_es</source>
+                <target>Resumen en español</target>
             </trans-unit>
             <trans-unit id="label.published_at">
                 <source>label.published_at</source>

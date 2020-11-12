@@ -43,3 +43,5 @@ my_project/var
 my_project/data
 
 public/uploads/pictures/*
+
+migrations/
