@@ -95,10 +95,6 @@ class BlogController extends AbstractController
             $em->persist($post);
             $em->flush();
 
-            // Flash messages are used to notify the user about the result of the
-            // actions. They are deleted automatically from the session as soon
-            // as they are accessed.
-            // See https://symfony.com/doc/current/controller.html#flash-messages
             $this->addFlash('success', 'post.created_successfully');
 
             if ($form->get('saveAndCreateNew')->isClicked()) {
