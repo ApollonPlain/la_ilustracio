@@ -8,7 +8,7 @@ dev.log
 symfony.lock
 composer.lock
 
-.idea
+.idea/
 
 node_modules
 
