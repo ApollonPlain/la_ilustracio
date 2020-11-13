@@ -19,7 +19,18 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="" />
+    <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BlogController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BlogController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/blog/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/blog/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blog/_rss.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/_rss.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blog/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/about.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blog/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blog/index.xml.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/index.xml.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blog/post_show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/post_show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/debug/source_code.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/debug/source_code.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,6 +169,24 @@
       <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/ocramius/proxy-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/vendor/friendsofphp/php-cs-fixer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/twig-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-messageformatter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
+      <path value="$PROJECT_DIR$/vendor/tgalopin/html-sanitizer" />
+      <path value="$PROJECT_DIR$/vendor/tgalopin/html-sanitizer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-code" />
+      <path value="$PROJECT_DIR$/vendor/zendframework/zend-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/twig/intl-extra" />
+      <path value="$PROJECT_DIR$/vendor/twig/markdown-extra" />
+      <path value="$PROJECT_DIR$/vendor/dama/doctrine-test-bundle" />
+      <path value="$PROJECT_DIR$/vendor/league/uri-parser" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/php-cs-fixer/diff" />
     </include_path>
   </component>
   <component name="ProjectId" id="1hVWiUCRviSVJSgFX1XcpfvsSqz" />
@@ -208,6 +237,7 @@
       <workItem from="1604918460664" duration="762000" />
       <workItem from="1604919315240" duration="4367000" />
       <workItem from="1605007953536" duration="3677000" />
+      <workItem from="1605112867196" duration="17520000" />
     </task>
     <servers />
   </component>
@@ -232,6 +262,10 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
+    <state x="698" y="278" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1605189256081">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="698" y="278" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1044@0.0.1920.1044" timestamp="1605189256081" />
     <state x="881" y="298" key="FileChooserDialogImpl" timestamp="1604408347441">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
@@ -240,17 +274,17 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="454" y="155" key="SettingsEditor/0.0.1920.1044@0.0.1920.1044" timestamp="1604919342280" />
-    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1605010082239">
+    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1605201063035">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1605010082239" />
-    <state x="624" y="237" key="run.anything.popup" timestamp="1604239202503">
+    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1605201063035" />
+    <state x="624" y="237" key="run.anything.popup" timestamp="1605198460892">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="624" y="237" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1604239202503" />
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1605009634060">
+    <state x="624" y="237" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1605198460892" />
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1605201067061">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1605009634060" />
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1605201067061" />
   </component>
 </project>

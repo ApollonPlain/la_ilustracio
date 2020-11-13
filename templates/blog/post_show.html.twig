@@ -10,7 +10,13 @@
         <span class="metadata"><i class="fa fa-user"></i> {{ post.author.fullName }}</span>
     </p>
 
-    {{ app.request.locale == "fr" ? post.contentFR|markdown_to_html|sanitize_html : post.contentES|markdown_to_html|sanitize_html }}
+    <p>{{ app.request.locale == "fr" ? post.summaryFR|markdown_to_html|sanitize_html : post.summaryES|markdown_to_html|sanitize_html }}</p>
+
+
+    <img src="{{ asset(pictures_directory ~ post.picture) }}" class="h-auto my-3" style="max-width: 100%;">
+
+
+    <p>{{ app.request.locale == "fr" ? post.contentFR|markdown_to_html|sanitize_html : post.contentES|markdown_to_html|sanitize_html }}</p>
 
     {{ include('blog/_post_tags.html.twig') }}
 
@@ -72,6 +78,6 @@
       to share common contents in different templates #}
     {{ parent() }}
 
-    {{ show_source_code(_self) }}
-    {{ include('blog/_rss.html.twig') }}
+{#    {{ show_source_code(_self) }}#}
+{#    {{ include('blog/_rss.html.twig') }}#}
 {% endblock %}
