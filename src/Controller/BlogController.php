@@ -37,7 +37,7 @@ class BlogController extends AbstractController
      * @Route("/", defaults={"page": "1", "_format"="html"}, methods="GET", name="blog_index")
      * @Route("/rss.xml", defaults={"page": "1", "_format"="xml"}, methods="GET", name="blog_rss")
      * @Route("/page/{page<[1-9]\d*>}", defaults={"_format"="html"}, methods="GET", name="blog_index_paginated")
-     * @Cache(smaxage="10")
+     * @Cache(smaxage="8")
      *
      * NOTE: For standard formats, Symfony will also automatically choose the best
      * Content-Type header for the response.
@@ -50,7 +50,6 @@ class BlogController extends AbstractController
             $tag = $tags->findOneBy(['name' => $request->query->get('tag')]);
         }
         $latestPosts = $posts->findLatest($page, $tag);
-
 
 
         // Every template name also has two extensions that specify the format and

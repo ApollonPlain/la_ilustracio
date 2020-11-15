@@ -13,6 +13,8 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+        {% block stylesheets_pages %}{% endblock %}
+
 
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -81,6 +83,10 @@
                                             </li>
                                         </ul>
                                     </li>
+                                {% else %}
+                                    <li>
+                                        <a class="fas fa-sign-in-alt" aria-hidden="true" href="{{ path('security_login') }}"></a>
+                                    </li>
                                 {% endif %}
 
                                 <li class="dropdown">
@@ -102,24 +108,33 @@
             </header>
         {% endblock %}
 
+        {% block nav_slide %}{% endblock %}
+
         <div class="container body-container">
             {% block body %}
                 <div class="row">
-                    <div id="main" class="col-sm-9">
+{#                    {% if is_granted('ROLE_ADMIN') %}#}
+{#                        <div id="main" class="col-sm-9">#}
+{#                    {% else %}#}
+                        <div id="main" class="col-sm-12">
+{#                    {% endif %}#}
                         {{ include('default/_flash_messages.html.twig') }}
 
                         {% block main %}{% endblock %}
                     </div>
 
-                    <div id="sidebar" class="col-sm-3">
-                        {% block sidebar %}
-                            {{ render_esi(controller('Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction', {
-                                'template': 'blog/about.html.twig',
-                                'sharedAge': 600,
-                                '_locale': app.request.locale
-                            })) }}
-                        {% endblock %}
-                    </div>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <div id="sidebar" class="col-sm-12">
+                            {% block sidebar %}
+                                {{ render_esi(controller('Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction', {
+                                    'template': 'blog/about.html.twig',
+                                    'sharedAge': 600,
+                                    '_locale': app.request.locale
+                                })) }}
+                            {% endblock %}
+                        </div>
+                    {% endif %}
                 </div>
             {% endblock %}
         </div>
@@ -154,6 +169,7 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
+        {% block js %}{% endblock %}
         {# it's not mandatory to set the timezone in localizeddate(). This is done to
            avoid errors when the 'intl' PHP extension is not available and the application
            is forced to use the limited "intl polyfill", which only supports UTC and GMT #}

@@ -2,21 +2,74 @@
 
 {% block body_id 'blog_post_show' %}
 
+{% block stylesheets_pages %}
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet"> <!--Replace with your tailwind.css once created-->
+{#    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" rel="stylesheet">#}
+    <style>
+        .smooth {transition: box-shadow 0.3s ease-in-out;}
+        ::selection{background-color: aliceblue}
+    </style>
+{% endblock %}
+
+{% block nav_slide %}
+    <div id="header" class="bg-white fixed w-full z-10 top-0 hidden animated" style="opacity: .95;">
+        <div class="bg-white">
+            <div class="flex flex-wrap items-center content-center">
+
+            </div>
+
+        </div>
+        <!--Progress bar-->
+        <div id="progress" class="h-1 bg-white shadow" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
+    </div>
+{% endblock %}
+
+
 {% block main %}
-    <h1>{{ app.request.locale == "fr" ? post.titleFR: post.titleES }}</h1>
+{#    <h1>{{ app.request.locale == "fr" ? post.titleFR: post.titleES }}</h1>#}
 
-    <p class="post-metadata">
-        <span class="metadata"><i class="fa fa-calendar"></i> {{ post.publishedAt|format_datetime('long', 'medium', '', 'UTC') }}</span>
-        <span class="metadata"><i class="fa fa-user"></i> {{ post.author.fullName }}</span>
-    </p>
+    <!--Title-->
+    <div class="text-center pt-16 md:pt-32">
+        <p class="text-teal-500 font-bold"> {{ post.publishedAt|format_datetime('long', 'medium', '', 'UTC') }} <span class="text-gray-900">/</span> {{ post.author.fullName }}</p>
+        <h1 class="font-bold break-normal text-3xl md:text-5xl">{{ app.request.locale == "fr" ? post.titleFR: post.titleES }}</h1>
+    </div>
 
-    <p>{{ app.request.locale == "fr" ? post.summaryFR|markdown_to_html|sanitize_html : post.summaryES|markdown_to_html|sanitize_html }}</p>
+{#    <p class="post-metadata">#}
+{#        <span class="metadata"><i class="fa fa-calendar"></i> {{ post.publishedAt|format_datetime('long', 'medium', '', 'UTC') }}</span>#}
+{#        <span class="metadata"><i class="fa fa-user"></i> {{ post.author.fullName }}</span>#}
+{#    </p>#}
+
+{#       Résumé #}
+{#    <p>{{ app.request.locale == "fr" ? post.summaryFR|markdown_to_html|sanitize_html : post.summaryES|markdown_to_html|sanitize_html }}</p>#}
+
+    <div class="container w-full mx-auto bg-white bg-cover mt-8 rounded" style="background-image:url('{{ asset(pictures_directory ~ post.picture) }}'); height: 75vh;"></div>
+{#    <div class="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" style="background-image:url('https://source.unsplash.com/collection/1118905/'); height: 75vh;"></div>#}
+
+{#    <img src="{{ asset(pictures_directory ~ post.picture) }}" class="h-auto my-3" style="max-width: 100%;">#}
 
 
-    <img src="{{ asset(pictures_directory ~ post.picture) }}" class="h-auto my-3" style="max-width: 100%;">
+    <div class="container mx-auto -mt-32" style="max-width: 90rem;">
 
+        <div class="mx-5 sm:mx-6">
 
-    <p>{{ app.request.locale == "fr" ? post.contentFR|markdown_to_html|sanitize_html : post.contentES|markdown_to_html|sanitize_html }}</p>
+			    <div class="bg-white w-full p-8 md:p-24 text-xl md:text-2xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
+
+				<!--Post Content-->
+
+				<!--Lead Para-->
+{#                    <p class="text-2xl md:text-3xl mb-5">#}
+{#                        👋 Welcome fellow <a class="text-gray-800 hover:text-teal-500 no-underline border-b-2 border-teal-500" href="https://www.tailwindcss.com">Tailwind CSS</a> and <a class="text-gray-800 hover:text-teal-500 no-underline border-b-2 border-teal-500" href="https://www.ghost.org">Ghost</a> fan.  This starter template is an attempt to replicate the default Ghost theme <a class="text-gray-800 hover:text-teal-500 no-underline border-b-2 border-teal-500" href="https://demo.ghost.io/welcome">"Casper"</a> using Tailwind CSS and vanilla Javascript.#}
+{#                    </p>#}
+
+                    <p class="text-2xl md:text-3xl mb-5">{{ app.request.locale == "fr" ? post.summaryFR|markdown_to_html|sanitize_html : post.summaryES|markdown_to_html|sanitize_html }}</p>
+
+                    <p class="py-6">{{ app.request.locale == "fr" ? post.contentFR|markdown_to_html|sanitize_html : post.contentES|markdown_to_html|sanitize_html }}</p>
+
+                </div>
+            </div>
+        </div>
+
+{#    <p>{{ app.request.locale == "fr" ? post.contentFR|markdown_to_html|sanitize_html : post.contentES|markdown_to_html|sanitize_html }}</p>#}
 
     {{ include('blog/_post_tags.html.twig') }}
 
@@ -80,4 +133,42 @@
 
 {#    {{ show_source_code(_self) }}#}
 {#    {{ include('blog/_rss.html.twig') }}#}
+{% endblock %}
+
+{% block js %}
+<script>
+    /* Progress bar */
+    //Source: https://alligator.io/js/progress-bar-javascript-css-variables/
+    var h = document.documentElement,
+        b = document.body,
+        st = 'scrollTop',
+        sh = 'scrollHeight',
+        progress = document.querySelector('#progress'),
+        scroll;
+    var scrollpos = window.scrollY;
+    var header = document.getElementById("header");
+
+    document.addEventListener('scroll', function() {
+
+        /*Refresh scroll % width*/
+        scroll = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+        progress.style.setProperty('--scroll', scroll + '%');
+
+        /*Apply classes for slide in bar*/
+        scrollpos = window.scrollY;
+
+        if(scrollpos > 100){
+            header.classList.remove("hidden");
+            header.classList.remove("fadeOutUp");
+            header.classList.add("slideInDown");
+        }
+        else {
+            header.classList.remove("slideInDown");
+            header.classList.add("fadeOutUp");
+            header.classList.add("hidden");
+        }
+
+    });
+
+</script>
 {% endblock %}
