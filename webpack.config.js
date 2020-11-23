@@ -15,7 +15,9 @@ Encore
         "window.Bloodhound": require.resolve('bloodhound-js'),
         "jQuery.tagsinput": "bootstrap-tagsinput"
     })
-    .enableSassLoader()
+    .enableSassLoader(function(sassOptions) {}, {
+        resolveUrlLoader: false
+    })
     // when versioning is enabled, each filename will include a hash that changes
     // whenever the contents of that file change. This allows you to use aggressive
     // caching strategies. Use Encore.isProduction() to enable it only for production.
@@ -24,6 +26,11 @@ Encore
     .addEntry('login', './assets/js/login.js')
     .addEntry('admin', './assets/js/admin.js')
     .addEntry('search', './assets/js/search.js')
+    .addEntry('pf', './assets/js/portefolio.js')
+    // .addEntry('pt', './assets/js/portefolio/pt.min.js')
+    // .addEntry('canvas', './assets/js/portefolio/canvas.js')
+    // .addEntry('index', './assets/js/portefolio/index.js')
+    // .addEntry('modal', './assets/js/portefolio/modal.js')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .enableIntegrityHashes(Encore.isProduction())
@@ -31,6 +38,11 @@ Encore
         useBuiltIns: 'usage',
         corejs: 3,
     })
+    .copyFiles({
+        from: './assets/images',
+        // to: './images'
+    })
+
 ;
 
 module.exports = Encore.getWebpackConfig();
