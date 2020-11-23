@@ -1,6 +1,6 @@
 // import "images";
 
-// import '../scss/app.scss';
+import '../scss/app.scss';
 // import '../scss/style.scss';
 
 // loads the Bootstrap jQuery plugins
