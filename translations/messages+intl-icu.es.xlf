@@ -259,6 +259,10 @@
                 <source>menu.admin</source>
                 <target>Backend</target>
             </trans-unit>
+            <trans-unit id="menu.login">
+                <source>menu.login</source>
+                <target>Iniciar</target>
+            </trans-unit>
             <trans-unit id="menu.logout">
                 <source>menu.logout</source>
                 <target>Desconectarse</target>

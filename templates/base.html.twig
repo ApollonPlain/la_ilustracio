@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %} La Ilustracion {% endblock %}</title>
+        <title>{% block title %} La Ilustración  {% endblock %}</title>
         <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -27,7 +27,7 @@
                     <div class="container">
                         <div class="navbar-header col-md-3 col-lg-2">
                             <a class="navbar-brand" href="{{ path('homepage') }}">
-                                La Ilustracion
+                                La Ilustración
                             </a>
 
                             <button type="button" class="navbar-toggle"
@@ -85,7 +85,7 @@
                                     </li>
                                 {% else %}
                                     <li>
-                                        <a class="fas fa-sign-in-alt" aria-hidden="true" href="{{ path('security_login') }}"></a>
+                                        <a aria-hidden="true" href="{{ path('security_login') }}"> <i class="fas fa-sign-in-alt"></i> {{ 'menu.login'|trans }}</a>
                                     </li>
                                 {% endif %}
 
@@ -144,7 +144,7 @@
                 <div class="container">
                     <div class="row">
                         <div id="footer-copyright" class="col-md-6">
-                            <p>&copy; {{ 'now'|date('Y') }} - La Ilustracion</p>
+                            <p>&copy; {{ 'now'|date('Y') }} - La Ilustración </p>
 {#                            <p>{{ 'mit_license'|trans }}</p>#}
                         </div>
                         <div id="footer-resources" class="col-md-6">
