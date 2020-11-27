@@ -29,7 +29,7 @@
 {#    <h1>{{ app.request.locale == "fr" ? post.titleFR: post.titleES }}</h1>#}
 
     <!--Title-->
-    <div class="text-center pt-16 md:pt-32">
+    <div class="text-center">
         <p class="text-teal-500 font-bold"> {{ post.publishedAt|format_datetime('long', 'medium', '', 'UTC') }} <span class="text-gray-900">/</span> {{ post.author.fullName }}</p>
         <h1 class="font-bold break-normal text-3xl md:text-5xl">{{ app.request.locale == "fr" ? post.titleFR: post.titleES }}</h1>
     </div>

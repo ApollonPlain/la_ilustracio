@@ -49,9 +49,10 @@
   "build/images/filler.png": "/build/images/filler.6779e6e3.png",
   "build/images/glyphicons-halflings-regular.svg": "/build/images/glyphicons-halflings-regular.060b2710.svg",
   "build/images/materialdesignicons-webfont.svg?v=1.5.54": "/build/images/materialdesignicons-webfont.6d6b5347.svg",
-  "build/images/thumb-1.jpg": "/build/images/thumb-1.6fdd1952.jpg",
-  "build/images/thumb-2.jpg": "/build/images/thumb-2.a78846c9.jpg",
-  "build/images/thumb-3.jpg": "/build/images/thumb-3.1849f07f.jpg",
+  "build/images/thumb-1.jpg": "/build/images/thumb-1.029ea060.jpg",
+  "build/images/thumb-2.jpg": "/build/images/thumb-2.6fdd1952.jpg",
+  "build/images/thumb-3.jpg": "/build/images/thumb-3.a78846c9.jpg",
+  "build/images/thumb-4.jpg": "/build/images/thumb-4.1849f07f.jpg",
   "build/me.png": "/build/me.png",
   "build/slides/anj-0.jpg": "/build/slides/anj-0.jpg",
   "build/slides/anj-1.jpg": "/build/slides/anj-1.jpg",
@@ -59,9 +60,13 @@
   "build/slides/ggc-1.jpg": "/build/slides/ggc-1.jpg",
   "build/slides/ggc-2.jpg": "/build/slides/ggc-2.jpg",
   "build/slides/ggc.png": "/build/slides/ggc.png",
+  "build/slides/ilu-0.jpg": "/build/slides/ilu-0.jpg",
+  "build/slides/ilu-1.jpg": "/build/slides/ilu-1.jpg",
+  "build/slides/ilu-2.jpg": "/build/slides/ilu-2.jpg",
   "build/slides/ksper-1.jpg": "/build/slides/ksper-1.jpg",
   "build/slides/ksper-2.jpg": "/build/slides/ksper-2.jpg",
   "build/thumb-1.jpg": "/build/thumb-1.jpg",
   "build/thumb-2.jpg": "/build/thumb-2.jpg",
-  "build/thumb-3.jpg": "/build/thumb-3.jpg"
+  "build/thumb-3.jpg": "/build/thumb-3.jpg",
+  "build/thumb-4.jpg": "/build/thumb-4.jpg"
 }

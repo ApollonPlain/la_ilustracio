@@ -13,6 +13,12 @@ $(document).ready(function(){
     //   tag: 'PERFORMANCE METRICS.',
     //   detail: 'Walker Tracker offers goal management, fitness tracking, and team competitions to companies for internal use. A Ruby on Rails and Javascript companion site for the Walker Tracker App. Features visual metrics and gamified progression system.',
     // },
+    ilu: {
+      title: 'la-ilustracion.com',
+      tag: 'BLOG JOURNALISTIQUE.',
+      detail: 'Blog journalistique sur l\'actualité franco-espagnole, réalisé en français et en espagnol.',
+      link: 'http://www.la-ilustracion.com/'
+    },
     anj: {
       title: 'airnjobs.com',
       tag: 'PLATEFORME DE RECRUTEMENT.',

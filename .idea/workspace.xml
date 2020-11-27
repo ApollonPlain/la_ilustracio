@@ -24,7 +24,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5ab65d80-b88f-4cda-a4b7-60f2db266439" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/thumb-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/thumb-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/thumb-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/thumb-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/thumb-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/thumb-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/portefolio/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/portefolio/modal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/0.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/1.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/admin.css" afterDir="false" />
@@ -32,16 +35,21 @@
       <change beforePath="$PROJECT_DIR$/public/build/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/images/thumb-1.6fdd1952.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/images/thumb-2.a78846c9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/images/thumb-3.1849f07f.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/pf.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/pf.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/pf.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/pf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/runtime.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/build/search.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/messages+intl-icu.en.xlf" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages+intl-icu.en.xlf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/messages+intl-icu.es.xlf" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages+intl-icu.es.xlf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/messages+intl-icu.fr.xlf" beforeDir="false" afterPath="$PROJECT_DIR$/translations/messages+intl-icu.fr.xlf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/thumb-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/thumb-1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/thumb-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/thumb-2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/thumb-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/thumb-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blog/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/blog/post_show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/post_show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/portefolio/template.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/portefolio/template.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,6 +275,8 @@
       <workItem from="1605919277204" duration="5781000" />
       <workItem from="1606123862995" duration="10101000" />
       <workItem from="1606233821780" duration="1136000" />
+      <workItem from="1606324891208" duration="844000" />
+      <workItem from="1606473635097" duration="2952000" />
     </task>
     <servers />
   </component>
@@ -315,17 +325,17 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="771" y="212" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1606233889135" />
-    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1606234882355">
+    <state x="390" y="181" width="1406" height="723" key="find.popup" timestamp="1606476955616">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1606234882355" />
+    <state x="390" y="181" width="1406" height="723" key="find.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1606476955616" />
     <state x="624" y="237" key="run.anything.popup" timestamp="1606127424350">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="624" y="237" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1606127424350" />
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1606234041347">
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup" timestamp="1606476906145">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1606234041347" />
+    <state x="0" y="0" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1606476906145" />
   </component>
 </project>

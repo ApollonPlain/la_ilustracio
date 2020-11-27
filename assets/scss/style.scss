@@ -766,7 +766,7 @@ section {
           }
         }
 
-        @for $i from 1 through 3 {
+        @for $i from 1 through 4 {
           &:nth-child(#{$i}) {
             .card {
               background: url('../images/thumb-#{$i}.jpg') center center/cover;
